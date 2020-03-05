@@ -1,0 +1,47 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>welcomeServlet</servlet-name>
+  	<display-name>welcomeServlet</display-name>
+  	<description></description>
+  	<servlet-class>welcomeServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>capsWelcomeServlet</servlet-name>
+  	<display-name>capsWelcomeServlet</display-name>
+  	<description></description>
+  	<servlet-class>capsWelcomeServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>collector</servlet-name>
+  	<display-name>collector</display-name>
+  	<description></description>
+  	<servlet-class>collector</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CheckOut</servlet-name>
+  	<display-name>CheckOut</display-name>
+  	<description></description>
+  	<servlet-class>CheckOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>welcomeServlet</servlet-name>
+  	<url-pattern>/WS</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>capsWelcomeServlet</servlet-name>
+  	<url-pattern>/CWS</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>collector</servlet-name>
+  	<url-pattern>/collector</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckOut</servlet-name>
+  	<url-pattern>/check</url-pattern>
+  </servlet-mapping>
+</web-app>
