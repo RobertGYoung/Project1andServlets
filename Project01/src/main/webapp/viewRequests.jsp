@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+        <%@ page isELIgnored="false"%>  
 <!DOCTYPE html>
 
 <html>
@@ -16,28 +19,25 @@
     <body>
  <div class="container"> 
 
-    <div class="row bg-dark p-5 text-success">
-        <div col="col-sm-2"></div>
-        <div col="col-8 mx-auto">
-          <h1>Company Reimbursment System</h1>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-8 mx-auto">
+          <h1>Company Reimbursement System</h1>
         </div>
-        <div col="col-sm-2"></div>
+        <div class="col-sm-2"></div>
     
     </div>
 <div class="row  justify-content-center pt-5">
-    <div class="col text-light"><h1 style="text-shadow:-5px 5px 30px black">Welcome</h1>
+
+    <div class="col"><h1>View Your History Here, ${name}</h1>
+
    
     </div>
 
-    <div class="col-sm-6 px-5 shadow-lg rounded-lg bg-dark">
-    
-      <div class="m-5 border border-dark p-2 rounded-lg bg-light shadow">
-   	<h3>Current Employees</h3><div class=""><a href="login.jsp"><button class=" btn btn-primary btn-lg m-2">Login</button></a></div> 
-    </div>
-     <div class="m-5 border border-dark p-2 rounded-lg bg-warning">
-    <h3>Are You New Here?</h3><a href="register.jsp"><button class="btn btn-success btn-lg m-2 ">Register</button></a></div>
-
-	
+    <div class="col-sm-8 border border-dark p-3 rounded-lg bg-info">
+   		<form>
+   			
+   		</form>
     </div>
 
     <div class="col"></div>
@@ -47,15 +47,6 @@
 
 
 </div> 
-
-
-<script>
-document.getElementById("submitButton").addEventListener("click",function(){
-    console.log("submit button has been clicked");
-
-});
-
-</script>
 
 </body>
 </html>

@@ -18,12 +18,12 @@
     <body>
  <div class="container"> 
 
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-8 mx-auto">
-          Company Reimbursment System 
+    <div class="row bg-dark p-5 text-success">
+        <div col="col-sm-2"></div>
+        <div col="col-8 mx-auto">
+          <h1>Company Reimbursment System</h1>
         </div>
-        <div class="col-sm-2"></div>
+        <div col="col-sm-2"></div>
     
     </div>
 <div class="row  justify-content-center pt-5">

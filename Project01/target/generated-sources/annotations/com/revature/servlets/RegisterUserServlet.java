@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.revature.logging.LoggerClass;
 import com.revature.logic.EmpLogic;
 import com.revature.pojo.Employee;
 
@@ -60,10 +61,13 @@ public class RegisterUserServlet extends HttpServlet {
 			emp.setName(name);
 			emp.setLastName(lname);
 			emp.setPassWord(password);
-			
-			out.print("<h1>Successful Registration- Database upload is: "+logic.insertUser(emp)+"</h1>");
+			boolean success = logic.insertUser(emp);
+			out.print("<h1>Successful Registration- Database upload is: "+success+"</h1>");
+			if(success) {
+				LoggerClass.mainLogger.trace("Employee "+emp.getName()+" registered successfully");
+			}
 			out.print("<br><br><br>");
-			out.print("<form action='/login.jsp'><input type=submit value='Go to Login'/></form></body></html>");
+			out.print("<form action='/Project01/login.jsp'><input type=submit value='Go to Login'/></form></body></html>");
 		
 	}
 	

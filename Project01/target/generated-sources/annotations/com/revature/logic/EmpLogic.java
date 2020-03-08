@@ -11,7 +11,8 @@ package com.revature.logic;
 
 	import com.revature.connection.SingletonConnection;
 	import com.revature.dao.EmpDao;
-	import com.revature.pojo.Employee;
+import com.revature.logging.LoggerClass;
+import com.revature.pojo.Employee;
 
 	public class EmpLogic {
 
@@ -35,7 +36,7 @@ package com.revature.logic;
 		private Employee pullEmpFromResultSet(ResultSet rs) throws SQLException {
 
 			Employee emp = new Employee();
-			emp.setEmployeeId(rs.getInt("EMPLOYEEID"));
+			emp.setEmployeeId(rs.getString("EMPLOYEEID"));
 			emp.setName(rs.getString("NAME"));
 			emp.setLastName(rs.getString("LASTNAME"));
 			emp.setEmail(rs.getString("EMAIL"));
@@ -45,6 +46,7 @@ package com.revature.logic;
 			emp.setZip(rs.getString("ZIP"));
 			emp.setState(rs.getString("STATE"));
 			emp.setPassWord(rs.getString("LOGINPASS"));
+			emp.setIsAdmin(rs.getInt("ISADMIN"));
 			return emp;
 
 		}
@@ -60,6 +62,7 @@ package com.revature.logic;
 				
 				if(rs.next()) {
 					System.out.println("found");
+					LoggerClass.mainLogger.trace("Pulling Employees in pojo..");
 					return pullEmpFromResultSet(rs);
 					
 				}
@@ -110,10 +113,16 @@ package com.revature.logic;
 			Connection conn=null;
 			try {
 				 conn = SingletonConnection.getInstance().getConnection();
-				PreparedStatement ps = conn.prepareStatement("UPDATE EMPLOYEES SET EMAIL=?,PASSWORD=? WHERE USERID=?");
-				ps.setString(1, emp.getEmail());
-				ps.setString(2, emp.getPassWord());
-				ps.setInt(3, emp.getEmployeeId());
+				PreparedStatement ps = conn.prepareStatement("UPDATE EMPLOYEES SET NAME=?,LASTNAME=?,EMAIL=?,STREET=?,CITY=?,STATE=?,COUNTRY=?,ZIP=? WHERE EMPLOYEEID=?");
+				ps.setString(1, emp.getName());
+				ps.setString(2, emp.getLastName());
+				ps.setString(3, emp.getEmail());
+				ps.setString(4, emp.getStreetAddress());
+				ps.setString(5, emp.getCity());
+				ps.setString(6, emp.getState());
+				ps.setString(7, emp.getCountry());
+				ps.setString(8, emp.getZip());
+				ps.setInt(9, Integer.parseInt(emp.getEmployeeId()));
 
 				int i = ps.executeUpdate();
 				

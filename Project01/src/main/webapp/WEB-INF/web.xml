@@ -16,6 +16,24 @@
   	<description></description>
   	<servlet-class>com.revature.servlets.LoginUserServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>MainMenuServlet</servlet-name>
+  	<display-name>MainMenuServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.revature.servlets.MainMenuServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateUserServlet</servlet-name>
+  	<display-name>UpdateUserServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.revature.servlets.UpdateUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SendRequestServlet</servlet-name>
+  	<display-name>SendRequestServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.revature.servlets.SendRequestServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegisterUserServlet</servlet-name>
   	<url-pattern>/RUS</url-pattern>
@@ -23,5 +41,17 @@
   <servlet-mapping>
   	<servlet-name>LoginUserServlet</servlet-name>
   	<url-pattern>/LUS</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MainMenuServlet</servlet-name>
+  	<url-pattern>/MMS</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateUserServlet</servlet-name>
+  	<url-pattern>/UUS</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SendRequestServlet</servlet-name>
+  	<url-pattern>/SRS</url-pattern>
   </servlet-mapping>
 </web-app>

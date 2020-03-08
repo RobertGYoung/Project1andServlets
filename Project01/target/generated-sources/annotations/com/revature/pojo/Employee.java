@@ -2,10 +2,10 @@ package com.revature.pojo;
 
 public class Employee {
 	
-	public int getEmployeeId() {
+	public String getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 	public String getName() {
@@ -62,6 +62,12 @@ public class Employee {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 	private String name;
 	private String lastName;
 
@@ -72,6 +78,7 @@ public class Employee {
 	private String zip;
 	private String state;
 	private String passWord;
-	private int employeeId;
+	private String employeeId;
+	private int isAdmin;
 	
 }

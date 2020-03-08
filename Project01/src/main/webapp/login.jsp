@@ -19,10 +19,10 @@
     <body>
  <div class="container"> 
 
-    <div class="row">
+  <div class="row bg-dark p-5 text-success">
         <div col="col-sm-2"></div>
         <div col="col-8 mx-auto">
-          Company Reimbursment System 
+          <h1>Company Reimbursment System</h1>
         </div>
         <div col="col-sm-2"></div>
     
@@ -33,33 +33,34 @@
     </div>
 
     <div class="col-sm-8 border border-dark p-5 rounded-lg bg-info">
-        <form action="LUS">
+        <form action="LUS" method="post">
             <div class="form-group row mx-sm-3">
-              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <label for="email" class="col-sm-2 col-form-label mr-4"><h5>Email</h5></label>
               <div class="col-sm-7">
-                <input type="text" class="form-control " id="email" name="email">
+                <input type="text" class="form-control " placeholder="Enter your email here" id="email" name="email">
               </div>
             </div>
             <div class="form-group row mx-sm-3">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <label for="inputPassword" class="col-sm-2 col-form-label mr-4"><h5>Password</h5></label>
               <div class="col-sm-7">
-                <input type="password" class="form-control" id="inputPassword">
+                <input type="password" class="form-control" placeholder="Enter a password" id="inputPassword" name="password">
               </div>
              
             </div>
-       <!--   <div class="form-check mx-sm-5">
-                <input class="form-check-input" type="radio" name="loginRadios" id="userRadio" value="option1" checked>
+     <div class="form-check mx-sm-5 ">
+                <input class="form-check-input" type="radio" name="loginRadios" id="userRadio" value="employee" checked>
                 <label class="form-check-label" for="userRadio">
                   As Employee
                 </label>
               </div>
-              <div class="form-check mx-sm-5">
-                <input class="form-check-input" type="radio" name="loginRadios" id="adminRadio" value="option2">
+              <div class="form-check mx-sm-5 ">
+                <input class="form-check-input" type="radio" name="loginRadios" id="adminRadio" value="admin">
                 <label class="form-check-label" for="adminRadio">
                   As Administrator
                 </label>
-              </div> -->   
-             <input type="submit" class="btn-primary" value="Login"/>
+              </div>  
+              
+             <input type="submit" class=" float-sm-right btn btn-primary" value="Login"/>
 
           </form>
 

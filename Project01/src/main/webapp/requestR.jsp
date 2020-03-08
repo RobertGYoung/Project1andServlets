@@ -36,30 +36,51 @@
         <div col="col-sm-5 mx-auto  justify-content-center">
              <h1>Company Reimbursement System </h1>
    		<span><a href="index.jsp"><button class="col-sm-2 mx-1 m-2 p-2 float-sm-right btn btn-lg btn-danger rounded-lg"> Log Out</button></a></span>
-          <h5 class="text-info">Welcome ${name} ${lname} | <span class="text-warning"> EmployeeID:${employeeId }</span>
+          <h5 class="text-info"><span class="text-success"> Request a Reimbursement</span> ${name} ${lname} | <span class="text-warning"> EmployeeID:${employeeId }</span>
           </h5>
         </div>
      
     
     </div>
-<div class="row pt-5">
 
-    <div class="col">
-
-   
+<div class="col-sm-8 border mx-auto border-dark p-3 mt-5 rounded-lg bg-light text-center ">
+<h2 class="text-light bg-dark rounded-lg shadow-lg p-2" >Make a Request</h2>
+<form action="SRS">
+  <div class="row">
+   <div class="col">
+      <input type="text" class="form-control" name="vendor" placeholder="Vendor ">
     </div>
-	
-    <div class="col-sm-8 border mx-auto border-dark p-3 rounded-lg bg-light "><div class="ml-5"><div class="ml-5">
-   		<a href="requestR.jsp"><button class="col-sm-2 mx-3 p-1 ml-4 btn btn-lg btn-dark rounded-lg"> Make Request</button></a> 
-   		<a href="viewRequests.jsp"><button class="col-sm-2 mx-2 p-1 btn btn-lg btn-dark rounded-lg"> View History</button>	</a> 
-   		<a href="updateInfo.jsp"><button class="col-sm-2 mx-3 p-1  btn btn-lg btn-dark rounded-lg"> Update Info</button>	</a> 
-   		    </div></div></div>
-   		    
-
-    <div class="col"></div>
+    <div class="col">
+      <input type="text" class="form-control" name="spentAmount" placeholder="Amount Spent">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" name="requestedAmount" placeholder="Amount Requested">
+    </div>
+  </div>
+  <div class="row">
+   <div class="col mt-3">
+      <textarea class="form-control" name="reason" placeholder="Please provide details and reasons for expenditure" rows=3 maxlength=300></textarea>
+    </div>
+   
+  </div>
+  <div class="row mt-3">
+  
+   <div class="col">
+      <input type="text" class="form-control" name="bankNumber" placeholder="Bank Account #">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" name="routingNumber" placeholder="Routing #">
+    </div>
+  
+  </div>
+  <div class="row">
+   <div class="col text-center">
+    <input type="submit" class="btn m-3 btn-lg btn-success " value="Submit"/>
+    </div>
+  </div>
+</form>
 
 </div>
-
 
 
 </div> 
