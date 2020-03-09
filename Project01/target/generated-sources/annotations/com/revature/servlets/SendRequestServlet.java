@@ -69,7 +69,7 @@ public class SendRequestServlet extends HttpServlet {
 		req.setBankNumber(Integer.parseInt(bankNumber));
 		req.setRoutingNumber(Integer.parseInt(routingNumber));
 		req.setCreatedBy(emp.getName()+" ID: "+employeeId);
-		LoggerClass.mainLogger.trace("About to do database stuff");
+		LoggerClass.mainLogger.trace("Request pojo updated for newly created request");
 
 
 			boolean success = logic.insertRequest(req,emp);

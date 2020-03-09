@@ -64,7 +64,8 @@ public class LoginUserServlet extends HttpServlet {
 		String lname= emp.getLastName();
 		int isAdmin = emp.getIsAdmin();
 		System.out.println("IsAdmin:"+isAdmin);
-				
+		LoggerClass.mainLogger.trace("Employee values updated for "+emp.getName());
+	
 		HttpSession session = request.getSession();
 		session.setAttribute("emp", emp);
 		session.setAttribute("email", email);
@@ -96,13 +97,14 @@ public class LoginUserServlet extends HttpServlet {
 				&&isAdmin==1) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("adminApplication.jsp");
 			dispatcher.forward(request, response);
-			LoggerClass.mainLogger.trace(name+"Logged in as Employee");
+			LoggerClass.mainLogger.trace(name+"Logged in as Admin");
 			
 		}
 		else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-			dispatcher.forward(request, response);
+			
 			LoggerClass.mainLogger.trace("Log in failed");
+			dispatcher.forward(request, response);
 
 		}
 		

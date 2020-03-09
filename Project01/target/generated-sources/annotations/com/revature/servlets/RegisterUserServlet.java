@@ -53,7 +53,8 @@ public class RegisterUserServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String validatePassword=request.getParameter("validatePassword");
-		
+		LoggerClass.mainLogger.trace("Checking password against database for "+name);
+
 	
 			EmpLogic logic =new EmpLogic();
 			Employee emp = new Employee();

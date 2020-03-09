@@ -15,8 +15,21 @@ import com.revature.pojo.Request;
 
 public class RequestLogic implements RequestDao {
 
-	Request getRequestByRequestId(int rId) {
-		
+	public Request getRequestByRequestId(int rId) {
+		try {
+			Connection conn = SingletonConnection.getInstance().getConnection();
+
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM RREQUESTS WHERE REIMBURSMENTID ="+rId);
+			while (rs.next()) {
+				return pullReqFromResultSet(rs);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 	Set<Request> getRequestsByEmployeeId(int employeeId){
@@ -118,4 +131,5 @@ public class RequestLogic implements RequestDao {
     boolean updateRequestInfo(Request emp) {
     	
     }
+
 }
