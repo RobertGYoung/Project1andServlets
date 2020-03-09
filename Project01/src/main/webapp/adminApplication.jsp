@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
         <%@ page isELIgnored="false"%>  
+        <%@ page import="	java.sql.Connection,
+	java.sql.PreparedStatement,
+	java.sql.ResultSet,
+	java.sql.SQLException,
+	java.sql.Statement,
+	 java.util.HashSet,
+	java.util.Set,
+	java.util.*,
+	com.revature.connection.SingletonConnection,
+	com.revature.dao.EmpDao,
+	com.revature.logic.RequestLogic,
+		com.revature.logic.EmpLogic,
+	
+com.revature.logging.LoggerClass,
+com.revature.pojo.Request,
+ com.revature.pojo.Employee" %>
         <!--  session vars:	session.setAttribute("currentUser", emp);
 		session.setAttribute("email", email);
 		session.setAttribute("name",name );
@@ -73,23 +89,48 @@
     <div class="tab-pane fade" id="request" role="tabpanel" aria-labelledby="request-tab">
         <header><h1>Employees</h1></header><hr>
 		
-	
+	<div >
 		<div>
 		<input type="text" placeholder="Employee Name" name="search"/>
 		<input type="submit" class="btn btn-primary"/>
 		</div>
-			List of all employees:</div>
-                                                            <!--                                                    -->
+			List of all employees:
+				<table class="table table-dark table-striped table-sm">
+                                 <% EmpLogic empLogic = new EmpLogic();
+                                 for(Employee emp: empLogic.getAllUEmployees()){
+                                	
+                                	 %>   
+                                	        <tr>
+                    	 <th scope="row"><%= emp.getEmployeeId() %></th>
+                          <td><%= emp.getName()%></td>
+                          <td><%=emp.getLastName() %></td>
+                          <td><%=emp.getStreetAddress() %></td>
+                          <td><%= emp.getCity()%></td>
+                          <td><%= emp.getState()%></td>
+                           <td><%=emp.getZip() %></td>
+                          <td><%=emp.getCountry() %></td>
+                          <td><%=emp.getIsAdmin() %></td>
+                          <td><%= emp.getEmail()%></td>
+                   
+                          
+                          
+                          <td><button type="submit" class="btn btn-primary">Details</button>
+                        </tr>	                                                              
+                                 <%} %>
+   							</table>
+			
+			</div>
+                  </div>                          	                <!--                                                    -->
    
 
          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <header><h1>Request History</h1>
-        </header><hr>XYA
+        </header><hr>
     
 
         <!--  acordian - has form elements in it-->
         <div class="accordion" id="accordionExample">
-            <div class="card">
+                   <div class="card">
               <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
                   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -98,12 +139,47 @@
                 </h2>
               </div>
           
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body text-dark">
-                
+                List of all Requests:
+               
+			<table class="table table-hover bg-light table-sm table-striped">
+			     <thead>
+                        <tr >
+                        	<th scope="col">Request ID</th>
+                        	<th scope="col">Created By</th>
+                        	<th scope="col">Requested Amount</th>
+                            <th scope="col">Vendor</th>
+                            <th scope="col">Bank #</th>
+                            <th scope="col">Routing #</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col">Modified BY</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                                 <% RequestLogic reqLogic = new RequestLogic();
+                                 for(Request req: reqLogic.getAllRequests()){
+                                	
+                                	 %>   
+                                	        <tr class="border">
+                    	 <th scope="row"><%= req.getRequestId() %></th>
+                          <td><%= req.getCreatedBy()%></td>
+                          <td><%=req.getRequestedAmount() %></td>
+                          <td><%=req.getVendor() %></td>
+                           <td><%=req.getBankNumber() %></td>
+                          <td><%=req.getRoutingNumber() %></td>
+                          <td><%=req.getCreatedOn() %></td>
+                          <td><%= req.getModifiedBy()%></td>
+                          <td><%= req.getIsApproved()%></td>
+                          
+                          
+                      
+                        </tr>	                                                              
+                                 <%} %>
+   							</table>
+</div>
                 </div>
               </div>
-            </div>
             <div class="card">
               <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
@@ -114,8 +190,42 @@
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+<table class="table table-hover bg-light">
+                    <thead>
+                        <tr >
+                        	<th scope="col">Request ID</th>
+                        	<th scope="col">Created By</th>
+                        	<th scope="col">Requested Amount</th>
+                            <th scope="col">Vendor</th>
+                            <th scope="col">Bank #</th>
+                            <th scope="col">Routing #</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col">Modified BY</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+ 
+                                 <% 
+                                 for(Request req: reqLogic.getAllPendingRequests()){
+                                	
+                                	 %>   
+                                	       <tr class="border">
+                    	 <th scope="row"><%= req.getRequestId() %></th>
+                          <td><%= req.getCreatedBy()%></td>
+                          <td><%=req.getRequestedAmount() %></td>
+                          <td><%=req.getVendor() %></td>
+                           <td><%=req.getBankNumber() %></td>
+                          <td><%=req.getRoutingNumber() %></td>
+                          <td><%=req.getCreatedOn() %></td>
+                          <td><%= req.getModifiedBy()%></td>
+                          <td><%= req.getIsApproved()%></td>
+                          
+                          		
+                          <td> <form action="ARS"><button type="submit" class="btn btn-primary" value ="<%=req.getRequestId()%>" name="details">Approve</button></form>
+                        </tr>	                                                              
+                                 <%} %>
+   							</table>               
+   							 </div>
               </div>
             </div>
             <div class="card">
@@ -127,9 +237,44 @@
                 </h2>
               </div>
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+                       <div class="card-body">
+<table class="table table-hover bg-light">
+                    <thead>
+                        <tr >
+                        	<th scope="col">Request ID</th>
+                        	<th scope="col">Created By</th>
+                        	<th scope="col">Requested Amount</th>
+                            <th scope="col">Vendor</th>
+                            <th scope="col">Bank #</th>
+                            <th scope="col">Routing #</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col">Modified BY</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+ 
+                                 <% 
+                                 for(Request req: reqLogic.getAllApprovedRequests()){
+                                	
+                                	 %>   
+                                	        <tr class="border">
+                    	 <th scope="row"><%= req.getRequestId() %></th>
+                          <td><%= req.getCreatedBy()%></td>
+                          <td><%=req.getRequestedAmount() %></td>
+                          <td><%=req.getVendor() %></td>
+    						
+                           <td><%=req.getBankNumber() %></td>
+                          <td><%=req.getRoutingNumber() %></td>
+                          <td><%=req.getCreatedOn() %></td>
+                          <td><%= req.getModifiedBy()%></td>
+                          <td><%= req.getIsApproved()%></td>
+                          
+                          
+                          <td><button type="submit" class="btn btn-primary">Details</button>
+                        </tr>	                                                              
+                                 <%} %>
+   							</table>               
+   							 </div>
               </div>
             </div>
           </div>
@@ -147,3 +292,4 @@
 
 </body>
 </html>
+       

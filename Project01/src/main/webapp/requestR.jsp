@@ -44,17 +44,17 @@
     </div>
 
 <div class="col-sm-8 border mx-auto border-dark p-3 mt-5 rounded-lg bg-light text-center ">
-<h2 class="text-light bg-dark rounded-lg shadow-lg p-2" >Make a Request</h2>
+<h2 class="text-light bg-dark rounded-lg shadow-lg p-2" > <span class="float-sm-left "><a href="application.jsp"><button class="btn btn-primary mb-2 mr-5">Go Back</button></a></span>Make a Request</h2>
 <form action="SRS">
   <div class="row">
    <div class="col">
       <input type="text" class="form-control" name="vendor" placeholder="Vendor ">
     </div>
     <div class="col">
-      <input type="text" class="form-control" name="spentAmount" placeholder="Amount Spent">
+      <input type="number" min="0" class="form-control" name="spentAmount" placeholder="Amount Spent">
     </div>
     <div class="col">
-      <input type="text" class="form-control" name="requestedAmount" placeholder="Amount Requested">
+      <input type="number" min="0" class="form-control" name="requestedAmount" placeholder="Amount Requested">
     </div>
   </div>
   <div class="row">
@@ -66,15 +66,16 @@
   <div class="row mt-3">
   
    <div class="col">
-      <input type="text" class="form-control" name="bankNumber" placeholder="Bank Account #">
+      <input type="number" class="form-control" name="bankNumber" placeholder="Bank Account #">
     </div>
     <div class="col">
-      <input type="text" class="form-control" name="routingNumber" placeholder="Routing #">
+      <input type="number" class="form-control" name="routingNumber" placeholder="Routing #">
     </div>
   
   </div>
   <div class="row">
    <div class="col text-center">
+  
     <input type="submit" class="btn m-3 btn-lg btn-success " value="Submit"/>
     </div>
   </div>

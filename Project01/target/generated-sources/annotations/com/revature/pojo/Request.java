@@ -13,7 +13,7 @@ public class Request {
 		String createdOn;
 		String createdBy;
 		String modifiedBy;
-		int isAproved;
+		int isApproved;
 		public int getRequestId() {
 			return requestId;
 		}
@@ -80,11 +80,11 @@ public class Request {
 		public void setReason(String reason) {
 			this.reason = reason;
 		}
-		public int getIsAproved() {
-			return isAproved;
+		public int getIsApproved() {
+			return isApproved;
 		}
-		public void setIsAproved(int isAproved) {
-			this.isAproved = isAproved;
+		public void setIsApproved(int isApproved) {
+			this.isApproved = isApproved;
 		}
 		
 		

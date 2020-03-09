@@ -22,6 +22,38 @@ public class RequestLogic implements RequestDao {
 	Set<Request> getRequestsByEmployeeId(int employeeId){
 		
 	}
+	 public Set<Request> getAllPendingRequests(){
+	    	try {
+				Connection conn = SingletonConnection.getInstance().getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM  RREQUESTS WHERE ISAPPROVED IS NULL");
+				Set<Request>allRequests = new HashSet<Request>();
+				while(rs.next()) {
+					Request req = pullReqFromResultSet(rs);
+					allRequests.add(req);
+				}
+				return allRequests;
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
+	    }
+	 public Set<Request> getAllApprovedRequests(){
+	    	try {
+				Connection conn = SingletonConnection.getInstance().getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM  RREQUESTS WHERE ISAPPROVED = 1");
+				Set<Request>allRequests = new HashSet<Request>();
+				while(rs.next()) {
+					Request req = pullReqFromResultSet(rs);
+					allRequests.add(req);
+				}
+				return allRequests;
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
+	    }
     public Set<Request> getAllRequests(){
     	try {
 			Connection conn = SingletonConnection.getInstance().getConnection();
@@ -43,9 +75,9 @@ public class RequestLogic implements RequestDao {
 		Request req = new Request();
 		req.setEmployeeId(rs.getInt("EMPLOYEEID"));
 		req.setRequestId(rs.getInt("REQUESTID"));
-		req.setIsAproved(rs.getInt("ISAPPROVED"));
+		req.setIsApproved(rs.getInt("ISAPPROVED"));
 		req.setSpentAmount(rs.getInt("SPENTAMOUNT"));
-		req.setRequestedAmount(rs.getInt("REIMBURSEMENTAMOUNT"));
+		req.setRequestedAmount(rs.getInt("REIMBURSMENTAMOUNT"));
 		req.setVendor(rs.getString("VENDOR"));
 		req.setBankNumber(rs.getInt("BANKNUMBER"));
 		req.setRoutingNumber(rs.getInt("ROUTINGNUMBER"));
