@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@ page isELIgnored="false"%>  
+        <%@ page isELIgnored="false"%>
+         <%@ page import="	java.sql.Connection,
+	java.sql.PreparedStatement,
+	java.sql.ResultSet,
+	java.sql.SQLException,
+	java.sql.Statement,
+	 java.util.HashSet,
+	java.util.Set,
+	java.util.*,
+	com.revature.connection.SingletonConnection,
+	com.revature.dao.EmpDao,
+	com.revature.logic.RequestLogic,
+		com.revature.logic.EmpLogic,
+	
+com.revature.logging.LoggerClass,
+com.revature.pojo.Request,
+ com.revature.pojo.Employee" %>  
 <!DOCTYPE html>
 
 <html>
@@ -35,9 +51,42 @@
     </div>
 
     <div class="col-sm-8 border border-dark p-3 rounded-lg bg-info">
-   		<form>
-   			
-   		</form>
+   		<table class="table table-dark table-striped table-sm">
+   		 <thead>
+                        <tr >
+                        	<th scope="col">Request ID</th>
+                        	<th scope="col">Created By</th>
+                        	<th scope="col">Requested Amount</th>
+                            <th scope="col">Vendor</th>
+                            <th scope="col">Bank #</th>
+                            <th scope="col">Routing #</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col">Modified BY</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                                 <% RequestLogic reqLogic = new RequestLogic();
+                                 int employeeId= Integer.parseInt((String)request.getSession().getAttribute("employeeId"));
+                                 for(Request req: reqLogic.getRequestsByEmployeeId(employeeId)){
+                                	
+                                	 %>   
+                                	        <tr>
+                    	 <th scope="row"><%= req.getRequestId() %></th>
+                          <td><%= req.getCreatedBy()%></td>
+                          <td><%=req.getRequestedAmount() %></td>
+                          <td><%=req.getVendor() %></td>
+                           <td><%=req.getBankNumber() %></td>
+                          <td><%=req.getRoutingNumber() %></td>
+                          <td><%=req.getCreatedOn() %></td>
+                          <td><%= req.getModifiedBy()%></td>
+                          <td><%= req.getIsApproved()%></td>
+                   
+                          
+                          
+             
+                        </tr>	                                                              
+                                 <%} %>
+   							</table>
     </div>
 
     <div class="col"></div>

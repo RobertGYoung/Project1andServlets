@@ -12,15 +12,15 @@ import com.revature.logging.LoggerClass;
 import com.revature.logic.RequestLogic;
 
 /**
- * Servlet implementation class ApproveRequestServlet
+ * Servlet implementation class RejectRequestServlet
  */
-public class ApproveRequestServlet extends HttpServlet {
+public class RejectRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApproveRequestServlet() {
+    public RejectRequestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,10 +47,10 @@ public class ApproveRequestServlet extends HttpServlet {
 		RequestLogic logic = new RequestLogic();
 		String name = (String)request.getSession().getAttribute("name");
 		int requestId = Integer.parseInt(request.getParameter("details"));
-		boolean success = logic.approvePendingRequest(requestId, name);
+		boolean success = logic.denyPendingRequest(requestId, name);
 		
 		if(success) {
-			LoggerClass.mainLogger.trace("Request #:"+requestId+" approved successfully");
+			LoggerClass.mainLogger.trace("Request #:"+requestId+" rejected successfully");
 			out.print(
 					"<!DOCTYPE html>\r\n" + 
 					"\r\n" + 
@@ -75,7 +75,7 @@ public class ApproveRequestServlet extends HttpServlet {
 					"        <div col=\"col-sm-5 mx-auto  justify-content-center\">\r\n"+ 
 					"             <h1>Company Reimbursement System </h1>\r\n" + 
 					"   		<span><a href=\"/Project01/adminApplication.jsp\"><button class=\"col-sm-2 mx-1 m-2 p-2 float-sm-right btn btn-lg btn-success rounded-lg\"> Back</button></a></span>\r\n" + 
-					"          <h1 class=\"text-info\">Successful Approval <br>Request #:<span class=\"text-warning\">&nbsp"+requestId+"</span></h1>\r\n" + 
+					"          <h1 class=\"text-info\">Successful <span class=\"text-danger\">Rejection</span> <br>Request #:<span class=\"text-warning\">&nbsp"+requestId+"</span></h1>\r\n" + 
 					"        </div>\r\n" + 
 					"     \r\n" + 
 					"    \r\n" + 

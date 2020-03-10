@@ -76,6 +76,7 @@ public class SendRequestServlet extends HttpServlet {
 			
 			if(success) {
 				LoggerClass.mainLogger.trace("Employee "+emp.getName()+" submitted successfully");
+				
 			}
 			out.print(
 					"<!DOCTYPE html>\r\n" + 
@@ -101,7 +102,7 @@ public class SendRequestServlet extends HttpServlet {
 					"        <div col=\"col-sm-5 mx-auto  justify-content-center\">\r\n"+ 
 					"             <h1>Company Reimbursement System </h1>\r\n" + 
 					"   		<span><a href=\"/Project01/application.jsp\"><button class=\"col-sm-2 mx-1 m-2 p-2 float-sm-right btn btn-lg btn-success rounded-lg\"> Back to Main Menu</button></a></span>\r\n" + 
-					"          <h5 class=\"text-info\"><h1>Successful Submission- Your Request Will Be Processed Soon | <span class=\"text-warning\"> EmployeeID:"+ employeeId+ "</span>\r\n" + 
+					"          <h5 class=\"text-info\"><h1>Successful Submission- Your Request Will Be Processed Soon | <span class=\"text-warning\"> EmployeeID:"+ employeeId+ " Request ID:"+logic.getMostRecentRequest().getRequestId()+"</span>\r\n" + 
 					"          </h5>\r\n" + 
 					"        </div>\r\n" + 
 					"     \r\n" + 

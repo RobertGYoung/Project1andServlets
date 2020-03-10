@@ -45,7 +45,7 @@ com.revature.pojo.Request,
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <body>
- <div class="container p-0"> 
+ <div class="container-fluid p-0"> 
 
       <div class="row bg-dark p-5 text-light">
       
@@ -56,7 +56,7 @@ com.revature.pojo.Request,
           </h5>
         </div>
      
-   <div class="container-sm"> 
+   <div class=" container-fluid"> 
         
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -188,7 +188,7 @@ com.revature.pojo.Request,
                   </button>
                 </h2>
               </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
 <table class="table table-hover bg-light">
                     <thead>
@@ -200,8 +200,8 @@ com.revature.pojo.Request,
                             <th scope="col">Bank #</th>
                             <th scope="col">Routing #</th>
                             <th scope="col">Created On</th>
-                            <th scope="col">Modified BY</th>
-                            <th scope="col">Status</th>
+                           
+                           
                         </tr>
                     </thead>
  
@@ -217,11 +217,13 @@ com.revature.pojo.Request,
                            <td><%=req.getBankNumber() %></td>
                           <td><%=req.getRoutingNumber() %></td>
                           <td><%=req.getCreatedOn() %></td>
-                          <td><%= req.getModifiedBy()%></td>
-                          <td><%= req.getIsApproved()%></td>
+                         
+                          
                           
                           		
-                          <td> <form action="ARS"><button type="submit" class="btn btn-primary" value ="<%=req.getRequestId()%>" name="details">Approve</button></form>
+                          <td> <form action="ARS"><button type="submit" class="btn btn-primary" value ="<%=req.getRequestId()%>" name="details">:)</button></form></td>
+                 		  <td> <form action="RRS"><button type="submit" class="btn btn-danger" value ="<%=req.getRequestId()%>" name="details">X</button></form></td>
+                          
                         </tr>	                                                              
                                  <%} %>
    							</table>               
@@ -254,7 +256,7 @@ com.revature.pojo.Request,
                     </thead>
  
                                  <% 
-                                 for(Request req: reqLogic.getAllApprovedRequests()){
+                                 for(Request req: reqLogic.getAllResolvedRequests()){
                                 	
                                 	 %>   
                                 	        <tr class="border">
@@ -270,7 +272,6 @@ com.revature.pojo.Request,
                           <td><%= req.getIsApproved()%></td>
                           
                           
-                          <td><button type="submit" class="btn btn-primary">Details</button>
                         </tr>	                                                              
                                  <%} %>
    							</table>               
@@ -289,7 +290,7 @@ com.revature.pojo.Request,
 
 
 </div> 
-
+</div>
 </body>
 </html>
        

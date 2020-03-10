@@ -14,6 +14,67 @@ import com.revature.pojo.Employee;
 import com.revature.pojo.Request;
 
 public class RequestLogic implements RequestDao {
+	public boolean approvePendingRequest(int requestId, String name) {
+		Connection conn=null;
+		try {
+			 conn = SingletonConnection.getInstance().getConnection();
+			PreparedStatement ps = conn.prepareStatement("UPDATE RREQUESTS SET ISAPPROVED=1, MODIFIEDBY=? WHERE REQUESTID=?");
+			ps.setString(1, name);
+
+			ps.setInt(2, requestId);
+			
+
+			int i = ps.executeUpdate();
+			
+			if(i==1) {
+				return true;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+			return false;
+		
+	}
+	public boolean denyPendingRequest(int requestId,String name) {
+		Connection conn=null;
+		try {
+			 conn = SingletonConnection.getInstance().getConnection();
+			PreparedStatement ps = conn.prepareStatement("UPDATE RREQUESTS SET ISAPPROVED=0, MODIFIEDBY=? WHERE REQUESTID=?");
+			ps.setString(1, name);
+
+			ps.setInt(2, requestId);
+			
+
+			int i = ps.executeUpdate();
+			
+			if(i==1) {
+				return true;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+			return false;
+		
+	}
+	
+	public Request getMostRecentRequest() {
+		try {
+			Connection conn = SingletonConnection.getInstance().getConnection();
+
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM RREQUESTS WHERE CREATEDON = (SELECT MAX (CREATEDON) FROM RREQUESTS)");
+					
+			while (rs.next()) {
+				return pullReqFromResultSet(rs);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 
 	public Request getRequestByRequestId(int rId) {
 		try {
@@ -32,8 +93,24 @@ public class RequestLogic implements RequestDao {
 		return null;
 		
 	}
-	Set<Request> getRequestsByEmployeeId(int employeeId){
-		
+	public Set<Request> getRequestsByEmployeeId(int employeeId){
+		try {
+			Connection conn = SingletonConnection.getInstance().getConnection();
+
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM RREQUESTS WHERE EMPLOYEEID ="+employeeId);
+			Set<Request>employeeRequests = new HashSet<Request>();
+			while(rs.next()) {
+				Request req = pullReqFromResultSet(rs);
+				employeeRequests.add(req);
+			}
+			return employeeRequests;
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			return null;
+
+	
 	}
 	 public Set<Request> getAllPendingRequests(){
 	    	try {
@@ -51,11 +128,11 @@ public class RequestLogic implements RequestDao {
 				}
 				return null;
 	    }
-	 public Set<Request> getAllApprovedRequests(){
+	 public Set<Request> getAllResolvedRequests(){
 	    	try {
 				Connection conn = SingletonConnection.getInstance().getConnection();
 				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM  RREQUESTS WHERE ISAPPROVED = 1");
+				ResultSet rs = stmt.executeQuery("SELECT * FROM  RREQUESTS WHERE ISAPPROVED = 1 OR ISAPPROVED = 0");
 				Set<Request>allRequests = new HashSet<Request>();
 				while(rs.next()) {
 					Request req = pullReqFromResultSet(rs);
