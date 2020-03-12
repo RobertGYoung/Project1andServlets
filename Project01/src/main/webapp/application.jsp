@@ -50,9 +50,9 @@
     </div>
 	
     <div class="col-sm-8 border mx-auto border-dark p-3 rounded-lg bg-light "><div class="ml-5"><div class="ml-5">
-   		<a href="requestR.jsp"><button class="col-sm-2 mx-3 p-1 ml-4 btn btn-lg btn-dark rounded-lg"> Make Request</button></a> 
-   		<a href="viewRequests.jsp"><button class="col-sm-2 mx-2 p-1 btn btn-lg btn-dark rounded-lg"> View History</button>	</a> 
-   		<a href="updateInfo.jsp"><button class="col-sm-2 mx-3 p-1  btn btn-lg btn-dark rounded-lg"> Update Info</button>	</a> 
+   		<a href="requestR.jsp"><button class="col-sm-2 mx-3 p-1 ml-4 btn btn-lg btn-dark rounded-lg p5"> Make Request</button></a> 
+   		<a href="viewRequests.jsp"><button class="col-sm-2 mx-2 p-1 btn btn-lg btn-dark rounded-lg p5"> View History</button>	</a> 
+   		<a href="updateInfo.jsp"><button class="col-sm-2 mx-3 p-1  btn btn-lg btn-dark rounded-lg p5"> Update Info</button>	</a> 
    		    </div></div></div>
    		    
 

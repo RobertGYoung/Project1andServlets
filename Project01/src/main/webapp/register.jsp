@@ -9,66 +9,67 @@
     </head>
     <style>
         body{
-            background-color: grey;
+            background-color: lightgrey;
         }
     </style>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <body>
+    <body style="font-family:serif;">
  <div class="container"> 
 
-    <div class="row bg-dark p-5 text-success">
+    <div class="row p-5 border border-dark text-dark shadow" style="background-color:#DCD0C0;font-family:serif;text-shadow:10px 2px 30px white;font-size:50px">
         <div col="col-sm-2"></div>
         <div col="col-8 mx-auto">
-          <h1>Company Reimbursment System</h1>
+          Company Reimbursment System
         </div>
         <div col="col-sm-2"></div>
     
     </div>
 <div class="row  justify-content-center pt-5">
-    <div class="col"><h1>Register</h1>
-    
+    <div class="col">
     </div>
 
-    <div class="col-sm-8 border border-dark p-5 rounded-lg bg-info">
+    <div class="col-sm-8 border border-dark p-5 rounded-lg ml-3 mb-5 text-center" style="background-color:#6d7993">
+    <h1 class="text-warning mb-5" style="text-shadow:10px 2px 30px black">Register</h1>
+    
         <form action="RUS">
           <div class="form-group row mx-sm-3">
               <label for="name" class="col-sm-2 col-form-label"><h5>First Name</h5></label>
-                 <div class="col-sm-7 ml-4">
-                  <input type="text" class="form-control " id="name" name="name">
+                 <div class="col-sm-7 ml-4 mt-2">
+                  <input type="text" class="form-control " id="name" name="name" required>
               </div>
          </div>
             <div class="form-group row mx-sm-3">
               <label for="lname" class="col-sm-2 col-form-label"><h5>Last Name</h5></label>
-              <div class="col-sm-7 ml-4">
-                <input type="text" class="form-control " id="lname" name="lname">
+              <div class="col-sm-7 ml-4 mt-2">
+                <input type="text" class="form-control " id="lname" name="lname" required>
               </div>
               </div>
      
             <div class="form-group row mx-sm-3">
-              <label for="email" class="col-sm-2 col-form-label"><h5>Enter Your Email</h5></label>
-              <div class="col-sm-7 ml-4">
-                <input type="text" class="form-control " id="email" name="email">
+              <label for="email" class="col-sm-2 col-form-label"><h5>Enter Email</h5></label>
+              <div class="col-sm-7 ml-4 mt-2">
+                <input type="text" class="form-control " id="email" name="email" required>
               </div>
             </div>
 
             <div class="form-group row mx-sm-3">
-              <label for="inputPassword" class="col-sm-2 col-form-label"><h6>Create Password</h6></label>
-              <div class="col-sm-7 ml-4">
-                <input type="password" class="form-control" name="password" id="inputPassword">
+              <label for="inputPassword" class="col-sm-2 col-form-label"><h5>Create Password</h5></label>
+              <div class="col-sm-7 ml-4 mt-2">
+                <input type="password" class="form-control" name="password" id="inputPassword required">
               </div>
              
             </div><div class="form-group row mx-sm-3">
               <label for="validatePassword" class="col-sm-2 col-form-label"><h5>Re-Enter Password</h5></label>
               <div class="col-sm-7 ml-4">
-                <input type="password" class="form-control" name="validatePassword" id="validatePassword">
+                <input type="password" class="form-control" name="validatePassword" id="validatePassword" required>
               </div>
              
             </div>
-            <input type="submit" class="btn-primary" value="register"/>
-
-          </form>
+            <button type="submit" class="btn btn-primary btn-lg mr-5 float-sm-right" value="">Register</button>
+			
+          </form><a href="index.jsp"><button class="btn btn-warning btn-lg ml-5 " >Go Back</button></a>
 
     </div>
 

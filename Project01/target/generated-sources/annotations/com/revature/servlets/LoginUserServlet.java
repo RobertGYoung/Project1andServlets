@@ -101,8 +101,9 @@ public class LoginUserServlet extends HttpServlet {
 			
 		}
 		else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			String success="0";
+			request.getSession().setAttribute("success", success);
 			LoggerClass.mainLogger.trace("Log in failed");
 			dispatcher.forward(request, response);
 

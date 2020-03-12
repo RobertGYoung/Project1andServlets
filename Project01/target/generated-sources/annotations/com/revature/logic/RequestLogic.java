@@ -205,8 +205,8 @@ public class RequestLogic implements RequestDao {
 		}
 		return false;
     }
-    boolean updateRequestInfo(Request emp) {
-    	
+    public boolean updateRequestInfo(Request emp) { //unused dao implementation
+    	return false;
     }
 
 }

@@ -37,15 +37,21 @@
             <div class="form-group row mx-sm-3">
               <label for="email" class="col-sm-2 col-form-label mr-4"><h5>Email</h5></label>
               <div class="col-sm-7">
-                <input type="text" class="form-control " placeholder="Enter your email here" id="email" name="email">
+                <input type="text" class="form-control " placeholder="Enter your email here" id="email" name="email" required
+                data-bv-notempty-message="The email is required">
               </div>
             </div>
             <div class="form-group row mx-sm-3">
               <label for="inputPassword" class="col-sm-2 col-form-label mr-4"><h5>Password</h5></label>
               <div class="col-sm-7">
-                <input type="password" class="form-control" placeholder="Enter a password" id="inputPassword" name="password">
+                <input type="password" class="form-control" placeholder="Enter a password" id="inputPassword" name="password" required
+                data-bv-notempty-message="The username is required">
               </div>
-             
+             <%@ include file="error.jsp"
+             %>
+             <%if((String)request.getSession().getAttribute("success")=="0"){ %>
+             <div style="color:red"><h6 class="ml-5">You either do not have an account or do not of administrator privilges</h6></div>
+             <%} %>
             </div>
      <div class="form-check mx-sm-5 ">
                 <input class="form-check-input" type="radio" name="loginRadios" id="userRadio" value="employee" checked>
@@ -75,13 +81,7 @@
 </div> 
 
 
-<script>
-document.getElementById("submitButton").addEventListener("click",function(){
-    console.log("submit button has been clicked");
 
-});
-
-</script>
 
 </body>
 </html>

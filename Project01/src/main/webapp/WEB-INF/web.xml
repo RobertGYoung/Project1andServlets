@@ -46,6 +46,12 @@
   	<description></description>
   	<servlet-class>com.revature.servlets.RejectRequestServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ViewEmployeeRequestsServlet</servlet-name>
+  	<display-name>ViewEmployeeRequestsServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.revature.servlets.ViewEmployeeRequestsServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegisterUserServlet</servlet-name>
   	<url-pattern>/RUS</url-pattern>
@@ -74,4 +80,16 @@
   	<servlet-name>RejectRequestServlet</servlet-name>
   	<url-pattern>/RRS</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ViewEmployeeRequestsServlet</servlet-name>
+  	<url-pattern>/VERS</url-pattern>
+  </servlet-mapping>
+  <error-page>
+   <error-code>404</error-code>
+   <location>/error.jsp</location>
+   </error-page>
+   <error-page>
+   <exception-type>java.lang.NullPointerException</exception-type>
+   <location>/login.jsp</location>
+   </error-page>
 </web-app>

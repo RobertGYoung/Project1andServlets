@@ -90,12 +90,12 @@ com.revature.pojo.Request,
         <header><h1>Employees</h1></header><hr>
 		
 	<div >
-		<div>
-		<input type="text" placeholder="Employee Name" name="search"/>
-		<input type="submit" class="btn btn-primary"/>
+		<div class="input-group" >
+		<input type="text" class="form-control" onkeyup="search()" placeholder="Employee Name, ID, or Email" id="search" name="search"/>
 		</div>
-			List of all employees:
-				<table class="table table-dark table-striped table-sm">
+		
+			List of all employees: 
+				<table id="employeeTable" class="table table-dark table-striped table-sm">
                                  <% EmpLogic empLogic = new EmpLogic();
                                  for(Employee emp: empLogic.getAllUEmployees()){
                                 	
@@ -113,8 +113,10 @@ com.revature.pojo.Request,
                           <td><%= emp.getEmail()%></td>
                    
                           
-                          
-                          <td><button type="submit" class="btn btn-primary">Details</button>
+                         
+                          <td>
+                          <form action="VERS">
+                          <button type="submit" class="btn btn-primary" value ="<%=emp.getEmployeeId()%>" name="details">Details</button></form>
                         </tr>	                                                              
                                  <%} %>
    							</table>
@@ -287,7 +289,43 @@ com.revature.pojo.Request,
                                                              <!--                                                    -->
 </div> 
 
+<script>
+function search() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("employeeTable");
+  tr = table.getElementsByTagName("tr");
 
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+	    th = tr[i].getElementsByTagName("th")[0];
+		  
+    td0 = tr[i].getElementsByTagName("td")[0];
+    td1 = tr[i].getElementsByTagName("td")[1];
+    td2 = tr[i].getElementsByTagName("td")[2];
+    td3 = tr[i].getElementsByTagName("td")[3];
+    td4 = tr[i].getElementsByTagName("td")[4];
+    td5 = tr[i].getElementsByTagName("td")[5];
+    td8 = tr[i].getElementsByTagName("td")[8];
+    if ( td0) {
+      txtValue =  td0.textContent ||td0.innerText;
+      txtValue1= td1.textContent ||td1.innerText;
+      emailValue= td8.textContent ||td8.innerText;
+      idValue = th.textContent || th.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1||txtValue1.toUpperCase().indexOf(filter) >-1||
+    	       idValue.toUpperCase().indexOf(filter) >-1||emailValue.toUpperCase().indexOf(filter) >-1) {
+        tr[i].style.display = "";
+        
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+    
+  }
+}
+</script>
 
 </div> 
 </div>
