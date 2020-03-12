@@ -1,12 +1,20 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.revature.logic.RequestLogic;
 import com.revature.pojo.Request;
@@ -43,10 +51,14 @@ public class ViewEmployeeRequestsServlet extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestLogic logic= new RequestLogic();
-		int employeeId = Integer.parseInt(request.getParameter("details"));
-		Set<Request> empReqs = logic.getRequestsByEmployeeId(employeeId);
+
+		Client client = ClientBuilder.newClient();
+     
+
+		WebTarget webTarget = client.target("http://localhost:8080/Project01/rest").path("requests");
+
 	}
+}
 	
 
-}
+

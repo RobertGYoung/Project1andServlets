@@ -7,13 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 import com.revature.connection.SingletonConnection;
 import com.revature.dao.RequestDao;
 import com.revature.pojo.Employee;
 import com.revature.pojo.Request;
+@Path("/requests")
 
 public class RequestLogic implements RequestDao {
+	
 	public boolean approvePendingRequest(int requestId, String name) {
 		Connection conn=null;
 		try {
@@ -93,7 +97,11 @@ public class RequestLogic implements RequestDao {
 		return null;
 		
 	}
-	public Set<Request> getRequestsByEmployeeId(int employeeId){
+	@GET 
+	@Path("/{Eid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Set<Request> getRequestsByEmployeeId(@PathParam("Eid")int employeeId){
+	
 		try {
 			Connection conn = SingletonConnection.getInstance().getConnection();
 

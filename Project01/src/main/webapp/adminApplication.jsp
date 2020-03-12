@@ -97,7 +97,10 @@ com.revature.pojo.Request,
 			List of all employees: 
 				<table id="employeeTable" class="table table-dark table-striped table-sm">
                                  <% EmpLogic empLogic = new EmpLogic();
+                               
                                  for(Employee emp: empLogic.getAllUEmployees()){
+                                	 String employeeId = emp.getEmployeeId();
+                                	 request.setAttribute("wtf", emp.getEmployeeId());
                                 	
                                 	 %>   
                                 	        <tr>
@@ -115,16 +118,46 @@ com.revature.pojo.Request,
                           
                          
                           <td>
-                          <form action="VERS">
-                          <button type="submit" class="btn btn-primary" value ="<%=emp.getEmployeeId()%>" name="details">Details</button></form>
+                          
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#employeeDetails" data-whatever="${wtf}" name="details">Details</button>
                         </tr>	                                                              
                                  <%} %>
    							</table>
 			
 			</div>
                   </div>                          	                <!--                                                    -->
-   
+   <!-- modal section -->
 
+
+<div class="modal fade" id="employeeDetails" tabindex="-1" role="dialog" aria-labelledby="employeeDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="employeeDetails">Employee Requests</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<script>$('#employeeDetails').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var employeeId = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text('Requests of ' + employeeId)
+	  
+	})</script>
+<!--  end modal section -->
          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <header><h1>Request History</h1>
         </header><hr>
@@ -327,7 +360,6 @@ function search() {
 }
 </script>
 
-</div> 
 </div>
 </body>
 </html>
