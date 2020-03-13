@@ -26,7 +26,7 @@ com.revature.pojo.Request,
     </head>
     <style>
         body{
-            background-color: grey;
+            background-color: lightgrey;
         }
     </style>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -35,23 +35,27 @@ com.revature.pojo.Request,
     <body>
  <div class="container"> 
 
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-8 mx-auto">
-          <h1>Company Reimbursement System</h1>
+    <div class="row bg-dark p-5 text-light">
+      
+        <div col="col-sm-5 mx-auto  justify-content-center">
+             <h1>Company Reimbursement System </h1>
+   		<span><a href="index.jsp"><button class="col-sm-2 mx-1 m-2 p-2 float-sm-right btn btn-lg btn-danger rounded-lg"> Log Out</button></a></span>
+          <h5 class="text-info"><span class="text-success"> Request a Reimbursement</span> ${name} ${lname} | <span class="text-warning"> EmployeeID:${employeeId }</span>
+          </h5>
         </div>
-        <div class="col-sm-2"></div>
+     
     
     </div>
 <div class="row  justify-content-center pt-5">
 
-    <div class="col"><h1>View Your History Here, ${name}</h1>
+    <div class="col"><h1 class="bg-info p-2 rounded-lg border border-light ">${name}'s Request History</h1>
 
    
     </div>
 
-    <div class="col-sm-8 border border-dark p-3 rounded-lg bg-info">
-   		<table class="table table-dark table-striped table-sm">
+    <div class="col-sm-8 border border-dark p-3 rounded-lg bg-light">
+    <span class="float-sm-left "><a href="application.jsp"><button class="btn btn-primary mb-2 mr-5 ">Go Back</button></a></span>
+   		<table class="table table-dark table-striped table-sm p-3 rounded-lg">
    		 <thead>
                         <tr >
                         	<th scope="col">Request ID</th>

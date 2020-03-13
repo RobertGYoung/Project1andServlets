@@ -10,7 +10,7 @@
     </head>
     <style>
         body{
-            background-color: grey;
+            background-color: lightgrey;
         }
     </style>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -28,11 +28,11 @@
     
     </div>
 <div class="row  justify-content-center pt-5">
-    <div class="col"><h1>Login</h1>
+    <div class="col"><h1 class="text-light" style="text-shadow: 5px 5px 10px black">Login</h1>
     
     </div>
 
-    <div class="col-sm-8 border border-dark p-5 rounded-lg bg-info">
+    <div class="col-sm-8 border border-dark p-5 rounded-lg bg-info shadow">
         <form action="LUS" method="post">
             <div class="form-group row mx-sm-3">
               <label for="email" class="col-sm-2 col-form-label mr-4"><h5>Email</h5></label>
@@ -50,25 +50,27 @@
              <%@ include file="error.jsp"
              %>
              <%if((String)request.getSession().getAttribute("success")=="0"){ %>
-             <div style="color:red"><h6 class="ml-5">You either do not have an account or do not of administrator privilges</h6></div>
+             <div style="color:red"><h6 class="ml-5">You do not administrator privileges</h6></div>
              <%} %>
             </div>
-     <div class="form-check mx-sm-5 ">
-                <input class="form-check-input" type="radio" name="loginRadios" id="userRadio" value="employee" checked>
-                <label class="form-check-label" for="userRadio">
+            <span class="invisible">xxxxxxxxxxxxxxxx</span>
+     <div class="btn-group btn-group-toggle mx-sm-5 " data-toggle="buttons">
+       <label class="btn btn-secondary text-success font-weight-bold active mr-3" for="userRadio">
+                <input  type="radio" name="loginRadios" id="userRadio" value="employee" autocomplete="off" checked>
+              
                   As Employee
                 </label>
-              </div>
-              <div class="form-check mx-sm-5 ">
-                <input class="form-check-input" type="radio" name="loginRadios" id="adminRadio" value="admin">
-                <label class="form-check-label" for="adminRadio">
+            
+                <label class=" btn btn-secondary font-weight-bold text-warning" for="adminRadio">
+                <input  type="radio" name="loginRadios" id="adminRadio" value="admin" autocomplete="off">
+              
                   As Administrator
                 </label>
-              </div>  
+               </div>
               
-             <input type="submit" class=" float-sm-right btn btn-primary" value="Login"/>
+             <input type="submit" class=" float-sm-right btn btn-success border mt-5 border-light" value="Login"/>
 
-          </form>
+          </form><span class="float-sm-left "><a href="index.jsp"><button class="btn btn-primary mb-2 mt-1 mr-5 border border-light">Go Back</button></a></span>
 
     </div>
 

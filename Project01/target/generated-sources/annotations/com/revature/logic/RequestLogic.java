@@ -171,6 +171,7 @@ public class RequestLogic implements RequestDao {
 	private Request pullReqFromResultSet(ResultSet rs) throws SQLException {
 
 		Request req = new Request();
+		
 		req.setEmployeeId(rs.getInt("EMPLOYEEID"));
 		req.setRequestId(rs.getInt("REQUESTID"));
 		req.setIsApproved(rs.getInt("ISAPPROVED"));
@@ -182,6 +183,7 @@ public class RequestLogic implements RequestDao {
 		req.setCreatedBy(rs.getString("CREATEDBY"));
 		req.setCreatedOn(rs.getString("CREATEDON"));
 		req.setModifiedBy(rs.getString("MODIFIEDBY"));
+		req.setReason(rs.getString("REASON"));
 
 		return req;
 

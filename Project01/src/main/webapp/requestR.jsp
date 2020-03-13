@@ -48,13 +48,13 @@
 <form action="SRS">
   <div class="row">
    <div class="col">
-      <input type="text" class="form-control" name="vendor" placeholder="Vendor ">
+      <input type="text" class="form-control" name="vendor" placeholder="Vendor " required>
     </div>
     <div class="col">
-      <input type="number" min="0" class="form-control" name="spentAmount" placeholder="Amount Spent">
+      <input type="number" min="0" class="form-control" name="spentAmount" placeholder="Amount Spent" required>
     </div>
     <div class="col">
-      <input type="number" min="0" class="form-control" name="requestedAmount" placeholder="Amount Requested">
+      <input type="number" min="0" class="form-control" name="requestedAmount" placeholder="Amount Requested" required>
     </div>
   </div>
   <div class="row">
@@ -66,10 +66,10 @@
   <div class="row mt-3">
   
    <div class="col">
-      <input type="number" class="form-control" name="bankNumber" placeholder="Bank Account #">
+      <input type="number" class="form-control" name="bankNumber" placeholder="Bank Account #" max="99999999" required>
     </div>
     <div class="col">
-      <input type="number" class="form-control" name="routingNumber" placeholder="Routing #">
+      <input type="number" class="form-control" name="routingNumber" placeholder="Routing #" max="99999999" required>
     </div>
   
   </div>

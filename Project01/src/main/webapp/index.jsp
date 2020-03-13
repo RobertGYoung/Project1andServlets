@@ -7,7 +7,7 @@
     </head>
     <style>
         body{
-            background-color: grey;
+            background-color: lightgrey;
         }
     </style>
     <%request.getSession().invalidate();
@@ -18,7 +18,7 @@
     <body>
  <div class="container"> 
 
-    <div class="row bg-dark p-5 text-success">
+    <div class="row bg-dark rounded-lg p-5 mt-5 text-success shadow">
         <div col="col-sm-2"></div>
         <div col="col-8 mx-auto">
           <h1>Company Reimbursment System</h1>
@@ -31,12 +31,12 @@
    
     </div>
 
-    <div class="col-sm-6 px-5 shadow-lg rounded-lg bg-dark">
+    <div class="col-sm-6 px-5 shadow-sm rounded-lg bg-light ">
     
       <div class="m-5 border border-dark p-2 rounded-lg bg-light shadow">
    	<h3>Current Employees</h3><div class=""><a href="login.jsp"><button class=" btn btn-primary btn-lg m-2">Login</button></a></div> 
     </div>
-     <div class="m-5 border border-dark p-2 rounded-lg bg-warning">
+     <div class="m-5 border border-dark p-2 rounded-lg bg-warning shadow">
     <h3>Are You New Here?</h3><a href="register.jsp"><button class="btn btn-success btn-lg m-2 ">Register</button></a></div>
 
 	

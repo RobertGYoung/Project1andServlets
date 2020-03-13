@@ -37,14 +37,15 @@ com.revature.pojo.Request,
 
     </head>
     <style>
-        body{
-            background-color: grey;
-        }
+       
+        .modal-body {
+  overflow-x: auto;
+}
     </style>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <body>
+    <body class="bg-dark">
  <div class="container-fluid p-0"> 
 
       <div class="row bg-dark p-5 text-light">
@@ -119,7 +120,7 @@ com.revature.pojo.Request,
                          
                           <td>
                           
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#employeeDetails" data-whatever="${wtf}" name="details">Details</button>
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#employeeDetails" data-whatever="${wtf}" onclick="load(${wtf})" name="details">Details</button>
                         </tr>	                                                              
                                  <%} %>
    							</table>
@@ -130,7 +131,7 @@ com.revature.pojo.Request,
 
 
 <div class="modal fade" id="employeeDetails" tabindex="-1" role="dialog" aria-labelledby="employeeDetailsLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-dark" id="employeeDetails">Employee Requests</h5>
@@ -138,8 +139,13 @@ com.revature.pojo.Request,
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-    
+      <div class="modal-body text-dark">
+
+		
+		<table class="table-lg table" id="myTable">
+			
+		
+		</table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -151,12 +157,65 @@ com.revature.pojo.Request,
 <script>$('#employeeDetails').on('show.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
 	  var employeeId = button.data('whatever') // Extract info from data-* attributes
-	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	  var modal = $(this)
 	  modal.find('.modal-title').text('Requests of ' + employeeId)
+ 
 	  
-	})</script>
+	})
+function load(employeeId){
+   
+    var url = "http://localhost:8081/Project01/rest/requests/"+employeeId;//url goes to getRequestsByEmployeeId method url provided by JACKSON
+    console.log(url); 
+    var request;  
+    if(window.XMLHttpRequest){    
+     request=new XMLHttpRequest();//for Chrome, mozilla etc  
+    }    
+    else if(window.ActiveXObject){    
+     request=new ActiveXObject("Microsoft.XMLHTTP");//for IE only  
+    }    
+    request.onreadystatechange  = function(){  
+       if (request.readyState == 4  )  
+       {  
+   
+         
+     	  var jsonObj = JSON.parse(request.responseText);//JSON.parse() returns JSON object  
+     	  console.log(jsonObj.length);
+     		var table= document.getElementById('myTable')
+     		var tr 
+     		var td
+     		var div
+     	  if(jsonObj.length>0){							//if there is data add remove any info- then add info
+     		 $("#myTable").children().remove();
+     	
+          	for(var i=0;i<jsonObj.length;i++){
+          	 tr = document.createElement('tr')
+             th = document.createElement('th')
+          	 td = document.createElement('td')
+		
+          	tr.appendChild(th).innerHTML="<strong><u>Request ID:</u></strong> "+jsonObj[i].requestId;
+         	tr.appendChild(td).innerHTML="<strong>Vendor:</strong> "+jsonObj[i].vendor+",  <strong>Reason:</strong> "+ jsonObj[i].reason;
+        	
+        	
+         
+         	table.appendChild(tr);
+         	}}
+
+         		
+     	  else{
+     		 $("#myTable").children().remove(); 		//if there is no json data- just remove previous data
+     		 tr = document.createElement('tr')
+     		td = document.createElement('td')
+     		
+              	tr.appendChild(td).innerHTML="<p class=\"ml-5\" style=\"color:red\">No Requests Exist for this Employee</p>"
+              		table.appendChild(tr);
+         	  }
+       }  
+    }  
+    request.open("GET", url, true);  
+    request.send(); 
+}  
+
+</script>
 <!--  end modal section -->
          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <header><h1>Request History</h1>

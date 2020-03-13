@@ -22,13 +22,15 @@
     <body>
  <div class="container"> 
 
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-8 mx-auto">
-          <h1>Company Reimbursement System</h1>
-          <h3 class="ml-5">Update Your Info, ${name} ${lname}</h3>
+     <div class="row bg-dark p-5 text-light">
+      
+        <div col="col-sm-5 mx-auto  justify-content-center">
+             <h1>Company Reimbursement System </h1>
+   		<span><a href="index.jsp"><button class="col-sm-2 mx-1 m-2 p-2 float-sm-right btn btn-lg btn-danger rounded-lg"> Log Out</button></a></span>
+          <h5 class="text-info"><span class="text-success"> Request a Reimbursement</span> ${name} ${lname} | <span class="text-warning"> EmployeeID:${employeeId }</span>
+          </h5>
         </div>
-        <div class="col-sm-2"></div>
+     
     
     </div>
 <div class="row  justify-content-center pt-5">
@@ -38,8 +40,9 @@
    
     </div>
 
-    <div class="col-sm-8 border border-dark p-3 rounded-lg bg-info">
+    <div class="col-sm-8 border border-dark p-3 rounded-lg bg-info"><span class="float-sm-left "><a href="application.jsp"><button class="btn btn-primary mb-2 mr-5">Go Back</button></a></span>
    		<form action="UUS">
+   		<br><br>
    	<div class="form-group">
     <label for="email"> Email: </label>
     <input type="email" class="form-control" id="email" placeholder="${email}" name="email" aria-describedby="email">
